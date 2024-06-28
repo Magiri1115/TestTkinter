@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Current Time App</title>
+</head>
+<body>
+    <h1>時刻を確認するには、以下のボタンをクリックしてください。</h1>
+    <button onclick="fetchTime()">Click Me</button>
+    <p id="time"></p>
+    <script>
+        function fetchTime() {
+            fetch('/get_time')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('time').textContent = '現在の時刻: ' + data;
+            })
+            .catch(error => console.error('Error fetching time:', error));
+        }
+    </script>
+</body>
+</html>
